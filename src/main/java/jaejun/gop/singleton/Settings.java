@@ -1,6 +1,8 @@
 package jaejun.gop.singleton;
 
-public class Settings {
+import java.io.Serializable;
+
+public class Settings implements Serializable {
     private static Settings instance;
     private static final Settings EAGER_INSTANCE = new Settings();
     private static volatile Settings instanceVolatile;
@@ -47,9 +49,15 @@ public class Settings {
     }
 
     /**
-     * static inner class
+     * static inner class줌
+     * inner 클래스가 호출되는 시점에 로딩
      */
     public static Settings getInstanceInnerClass() {
         return SettingsHolder.INSTANCE;
+    }
+
+    //역직렬화 동작시 해당 메소드를 자동으로 호출하여 싱글톤을 보장해
+    protected Object readResolve() {
+        return getInstanceInnerClass();
     }
 }
