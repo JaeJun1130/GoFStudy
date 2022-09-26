@@ -16,7 +16,7 @@ public class Settings {
     /**
      * synchronized 키워드 사용하기 (동기화)
      */
-    public static Settings getInstance() {
+    public static synchronized Settings getInstance() {
         if (instance == null) {
             instance = new Settings();
         }
