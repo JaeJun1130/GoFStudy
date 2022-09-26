@@ -13,6 +13,16 @@ public class Settings implements Serializable {
         private static final Settings INSTANCE = new Settings();
     }
 
+    /**
+     * 멀티 스레드 환경에서는 safe 하지 않음
+     */
+    public static Settings getInstanceNotSafe() {
+        if (instance == null) {
+            instance = new Settings();
+        }
+        return instance;
+    }
+
     /* Thread Safe */
 
     /**
