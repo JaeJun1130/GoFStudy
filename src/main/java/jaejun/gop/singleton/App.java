@@ -19,7 +19,7 @@ public class App {
         System.out.println(settings == settings2);
 
         //직렬화 역직렬화
-        //대응 방안으로 용() 메소드 사
+        //대응 방안으로 readResolve() 메소드 사용
         Settings settings3 = null;
         try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream("setting.obj"))) {
             out.writeObject(settings);

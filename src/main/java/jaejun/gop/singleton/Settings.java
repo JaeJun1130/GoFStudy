@@ -66,7 +66,7 @@ public class Settings implements Serializable {
         return SettingsHolder.INSTANCE;
     }
 
-    //역직렬화 동작시 해당 메소드를 자동으로 호출하여 싱글톤을 보장해
+    //역직렬화 동작시 해당 메소드를 자동으로 호출하여 싱글톤을 보장해줌
     protected Object readResolve() {
         return getInstanceInnerClass();
     }
