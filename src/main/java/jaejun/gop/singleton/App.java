@@ -28,7 +28,36 @@ public class App {
         try (ObjectInput input = new ObjectInputStream(new FileInputStream("setting.obj"))) {
             settings3 = (Settings) input.readObject();
         }
-
         System.out.println(settings == settings3);
+
+
+        /* enum class 는 싱글톤을 깨트릴 수 없음
+         * 리플렉션으로도 불가능
+         * enum에 대한 리플렉션은 만들수 없다. (Cannot reflectively create enum objects)
+         *
+         *
+         * 단점은 enum 은 클래스가 미리 만들어진다.
+         */
+        SettingEnum settingEnum = SettingEnum.INSTANCE;
+        SettingEnum settingEnum1 = null;
+        Constructor<?>[] declaredConstructors = SettingEnum.class.getDeclaredConstructors();
+        for (Constructor<?> constructor : declaredConstructors) {
+            constructor.setAccessible(true);
+            settingEnum1 = (SettingEnum) constructor.newInstance("INSTANCE");
+        }
+        System.out.println(settingEnum == settingEnum1);
+
+        /**
+         * enum은 자제적은 Serializable를 상속받고 있기 때문에 직렬화 역직렬화에 안전하다.
+         */
+        SettingEnum settingEnum2 = null;
+        try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream("settingEnum.obj"))) {
+            out.writeObject(settingEnum);
+        }
+
+        try (ObjectInput input = new ObjectInputStream(new FileInputStream("settingEnum.obj"))) {
+            settingEnum2 = (SettingEnum) input.readObject();
+        }
+        System.out.println(settingEnum == settingEnum2);
     }
 }
