@@ -1,4 +1,4 @@
-package jaejun.gop.singleton;
+package jaejun.gof.singleton;
 
 public enum SettingEnum {
     INSTANCE;

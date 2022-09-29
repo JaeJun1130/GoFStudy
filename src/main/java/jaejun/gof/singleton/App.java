@@ -1,4 +1,4 @@
-package jaejun.gop.singleton;
+package jaejun.gof.singleton;
 
 import java.io.*;
 import java.lang.reflect.Constructor;

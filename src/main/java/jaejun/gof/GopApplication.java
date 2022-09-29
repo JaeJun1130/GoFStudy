@@ -1,4 +1,4 @@
-package jaejun.gop;
+package jaejun.gof;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package jaejun.gop.singleton.spring;
+package jaejun.gof.singleton.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package jaejun.gop;
+package jaejun.gof;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
